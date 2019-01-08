@@ -9,7 +9,7 @@ namespace BE
    public class Trainee //student for test
     {
 
-        public string id { get => id; private set => id = value; }
+        public string id { get;  set; }
         public string first_name { get => first_name; private set => first_name = value; }
         public string last_name { get => last_name; private set => last_name = value; }
         public DateTime date_birth { get => date_birth; private set => date_birth = value; }
