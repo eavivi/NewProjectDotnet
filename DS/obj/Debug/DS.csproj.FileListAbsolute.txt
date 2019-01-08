@@ -1,0 +1,2 @@
+C:\Users\איתן\Documents\מכון לב\מיני פרוייקט\תרגילים קבצים\Project01_5029_9531_dotNet5779\DS\obj\Debug\DS.csprojAssemblyReference.cache
+C:\Users\איתן\Documents\מכון לב\מיני פרוייקט\תרגילים קבצים\Project01_5029_9531_dotNet5779\DS\obj\Debug\DS.csproj.CoreCompileInputs.cache
