@@ -8,7 +8,7 @@ namespace BE
 {
     class Configuration
     {
-        public static string DALType = "List";
+        public static string DALType = "List";//
         public static string BLType = "myBL";
         public static int MaxAgeTester = 40;
         public static int MinAgeTester = 20;
