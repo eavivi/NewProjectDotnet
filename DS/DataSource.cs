@@ -24,13 +24,13 @@ namespace DS
             tests = new List<Test>();
             Test test = new Test("12345666", "12345670", new DateTime(2019, 2, 3), new Address("hacotel", 5, "jerusalem"), Gear_type.manual, Vehicle.private_car);
             Test test2 = new Test("00005666", "12345670", new DateTime(2019, 2, 3), new Address("hacotel", 5, "jerusalem"), Gear_type.manual, Vehicle.private_car);
-            test.is_pass = true;
-            test2.is_pass = true;
-            test.note = "this is an exemple, the code is in DS";
+            test.Is_pass = true;
+            test2.Is_pass = true;
+            test.Note = "this is an exemple, the code is in DS";
             tests.Add(test);
             tests.Add(test2);
             var x = (Test)(test.Clone());
-            x.is_pass = false;
+            x.Is_pass = false;
             tests.Add(x);
             tests.Add((Test)(test2.Clone()));
             tests.Add(x);

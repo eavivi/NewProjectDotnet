@@ -10,18 +10,18 @@ namespace BE
     {
 
        public string Id { get; set; }
-       public string First_name { get=>First_name; private set=>First_name=value; }
-       public string Last_name { get=>Last_name; private set=>Last_name=value; }
-       public DateTime Date_birth { get=>Date_birth; private set=>Date_birth=value; }
-       public Gender gender { get=>gender; private set=>gender=value; }
-       public string phone { get=>phone; private set=>phone=value; }
-       public Address address { get=>address; private set=>address=value; }
-       public int experience { get=>experience; private set=>experience=value; }
-       public int tests_max { get=>tests_max; private set=>tests_max=value; }
-       public Gear_type g_t { get => g_t; private set => g_t = value; }
-       public Vehicle vehicle { get=>vehicle; private set=>vehicle=value; }
-       public bool[,] work_range = new bool[5, 6] ;
-       public double max_distance { get=>max_distance; private set=>max_distance=value; }
+       public string First_name { get=>First_name;  set=>First_name=value; }
+       public string Last_name { get=>Last_name;  set=>Last_name=value; }
+       public DateTime Date_birth { get=>Date_birth;  set=>Date_birth=value; }
+       public Gender Gender { get=>Gender;  set=>Gender=value; }
+       public string Phone { get=>Phone;  set=>Phone=value; }
+       public Address Address { get=>Address;  set=>Address=value; }
+       public int Experience { get=>Experience;  set=>Experience=value; }
+       public int Tests_max { get=>Tests_max;  set=>Tests_max=value; }
+       public Gear_type G_t { get => G_t;  set => G_t = value; }
+       public Vehicle Vehicle { get=>Vehicle;  set=>Vehicle=value; }
+       public bool[,] Work_range = new bool[5, 6] ;
+       public double Max_distance { get=>Max_distance; set=>Max_distance=value; }
        public int Age
 
         {
@@ -41,31 +41,31 @@ namespace BE
         public Tester(string id, string first, string last, DateTime birth, Gender gen, string phone,
             Address addre,  int experi ,int maxTests, Vehicle v,  Gear_type gt, double maxDistance )
         {
-            this.id = id;
+            this.Id = id;
             First_name = first;
             Last_name = last;
             Date_birth = birth;
-            gender = gen;
-            this.phone = phone;
-            this.address = address;
-            vehicle = v;
-            g_t = gt;
-            experience = experi;
-            tests_max = maxTests;
-            max_distance = maxDistance;
+            Gender = gen;
+            this.Phone = phone;
+            this.Address = Address;
+            Vehicle = v;
+            G_t = gt;
+            Experience = experi;
+            Tests_max = maxTests;
+            Max_distance = maxDistance;
         }
              
 
         public override string ToString()
         {
-            return "tester name: " + First_name + Last_name + "id: " + id;
+            return "tester name: " + First_name + Last_name + "id: " + Id;
         }
 
         public object Clone()
 
         {
             Tester temp = (Tester)MemberwiseClone();
-            temp.address = new Address(address.street, address.houseNumber, address.city);
+            temp.Address = new Address(Address.street, Address.houseNumber, Address.city);
             temp.Date_birth = new DateTime(Date_birth.Year, Date_birth.Month, Date_birth.Day);
             return temp;
 

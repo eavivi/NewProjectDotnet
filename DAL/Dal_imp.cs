@@ -9,19 +9,15 @@ using System.Collections.Specialized;
 
 namespace DAL
 {
-    class Dal_imp: Idal
+    class Dal_imp : Idal
     {
-        #region Singleton
-
-        private static readonly Dal_imp instance = new Dal_imp();
-
         public event EventHandler<EventArgs> TesterEvent;
         public event EventHandler<EventArgs> TraineeEvent;
         public event EventHandler<EventArgs> TestEvent;
 
         public void AddTest(Test t)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void AddTester(Tester t)
@@ -49,7 +45,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public Tester findTester(string teste_id)
+        public Tester FindTester(string teste_id)
         {
             throw new NotImplementedException();
         }
@@ -59,7 +55,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public List<Tester> getAllTesters()
+        public List<Tester> GetAllTesters()
         {
             throw new NotImplementedException();
         }

@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-   public class Trainee //student for test
+   public class Trainee //student
     {
-
-        public string id { get;  set; }
-        public string first_name { get => first_name; private set => first_name = value; }
-        public string last_name { get => last_name; private set => last_name = value; }
-        public DateTime date_birth { get => date_birth; private set => date_birth = value; }
-        public Gender gender { get=>gender; private set=>gender=value; }
-        public string phone { get => phone; private set => phone = value; }
-        public Address address { get => address; private set => address = value; }
-        public Vehicle vehicle { get => vehicle; private set => vehicle = value; }
-        public Gear_type g_t { get => g_t; private set => g_t = value; }
-        public string school { get => school; private set => school = value; }
-        public string teacher { get => teacher; private set => teacher = value; }
-        public int lesson_Num { get => lesson_Num; private set => lesson_Num = value; }
+        
+  
+        public string Id { get;  set; }
+        public string First_name { get => First_name;  set => First_name = value; }
+        public string Last_name { get => Last_name;  set => Last_name = value; }
+        public DateTime Date_birth { get => Date_birth;  set => Date_birth = value; }
+        public Gender Gender { get=>Gender;  set=>Gender=value; }
+        public string Phone { get => Phone;  set => Phone = value; }
+        public Address Address { get => Address;  set => Address = value; }
+        public Vehicle Vehicle { get => Vehicle;  set => Vehicle = value; }
+        public Gear_type G_t { get => G_t;  set => G_t = value; }
+        public string School { get => School;  set => School = value; }
+        public string Teacher { get => Teacher;  set => Teacher = value; }
+        public int Lesson_Num { get => Lesson_Num;  set => Lesson_Num = value; }
         public DateTime Registration_date { get => Registration_date; set => Registration_date = value; }
 
         public int Age
@@ -30,35 +31,35 @@ namespace BE
                 // Save today's date
               var today = DateTime.Today;
                 // Calculate the age.
-                var age = today.Year - date_birth.Year;
+                var age = today.Year - Date_birth.Year;
                 // Go back to the year the person was born in case of a leap year
-                if (date_birth > today.AddYears(-age)) age--;
+                if (Date_birth > today.AddYears(-age)) age--;
                 return age;
             }
-            set => date_birth = new DateTime(DateTime.Now.Year - value, 1, 1);//default month and day if enter only age
+            set => Date_birth = new DateTime(DateTime.Now.Year - value, 1, 1);//default month and day if enter only age
         }
 
         public Trainee(string id, string first, string last, DateTime birth, Gender gen, string phone, Address address, Vehicle v, Gear_type gt, string nameSchool, string nameTeacher, int numLess)
         {
-            this.id = id;
-            first_name = first;
-            last_name = last;
-            date_birth = birth;
-            gender = gen;
-            this.phone = phone;
-            this.address = address;
-            vehicle = v;
-            g_t = gt;
-            school = nameSchool;
-            teacher = nameTeacher;
-            lesson_Num = numLess;
+            this.Id = id;
+            First_name = first;
+            Last_name = last;
+            Date_birth = birth;
+            Gender = gen;
+            this.Phone = phone;
+            this.Address = address;
+            Vehicle = v;
+            G_t = gt;
+            School = nameSchool;
+            Teacher = nameTeacher;
+            Lesson_Num = numLess;
             Registration_date = DateTime.Now;
         }
 
 
             public override string ToString()
         {
-            return "Trainee name:" + first_name + last_name + "id:" + id;
+            return "Trainee name:" + First_name + Last_name + "id:" + Id;
         }
     }
 }

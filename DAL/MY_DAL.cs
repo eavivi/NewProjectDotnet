@@ -15,8 +15,8 @@ namespace DAL
         void DeleteTester(Tester t);
         void UpdateTester(Tester t);
         void UpdateTester(Tester tester, string id);
-        Tester findTester(string teste_id);
-        List<Tester> getAllTesters();
+        Tester FindTester(string teste_id);
+        List<Tester> GetAllTesters();
         event EventHandler<EventArgs> TesterEvent;
         List<Tester> GetTestersList(Predicate<Tester> p);
 
@@ -32,9 +32,8 @@ namespace DAL
         event EventHandler<EventArgs> TraineeEvent;
         IEnumerable<object> traineeGrouping(string property);
 
-
-
         #endregion
+
         #region Test
         void AddTest(Test t);
         void DeleteTest(Test t);
