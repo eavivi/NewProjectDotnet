@@ -1,8 +1,18 @@
 {
   "ExpandedNodes": [
     "",
-    "\\BE",
-    "\\DS"
+    "\\DS",
+    "\\DS\\obj",
+    "\\DS\\obj\\Debug",
+    "\\DS\\obj\\Release",
+    "\\Project01_5029_9531_dotNet5779",
+    "\\Project01_5029_9531_dotNet5779\\obj",
+    "\\Project01_5029_9531_dotNet5779\\obj\\Debug",
+    "\\Project01_5029_9531_dotNet5779\\obj\\Release",
+    "\\UI",
+    "\\UI\\obj",
+    "\\UI\\obj\\Debug",
+    "\\UI\\obj\\Release"
   ],
   "PreviewInSolutionExplorer": false
 }

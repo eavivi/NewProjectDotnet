@@ -6,88 +6,170 @@ using System.Threading.Tasks;
 
 namespace BE
 {
- public   class Test
+ public class Test
     {
-        public string Test_Id { get=>Tester_Id;  set=>Tester_Id=value; }
-        public string Tester_Id { get=>Tester_Id;  set=>Tester_Id=value; }
-        public string Student_Id { get=>Student_Id ;  set=> Student_Id=value; }
-        public DateTime Date { get=> Date;  set => Date= value; }
-        public DateTime Time { get =>Time ;  set=>Time=value; }
-        public Address Address { get=>Address;  set=>Address=value; }
-        public bool Distance_keep { get=>Distance_keep;  set =>Distance_keep=value; }
-        public bool Reverse_parking { get=>Reverse_parking;  set =>Reverse_parking=value; }
-        public bool Mirrors { get=>Mirrors; set=>Mirrors=value; }
-        public bool Signals { get=>Signals;  set=>Signals=value; } //aitutim
-        public bool Speed { get => Speed;  set => Speed = value; }
-        public bool Is_pass { get=>Is_pass;  set=>Is_pass=value; }
-        public string Note { get=>Note;  set=> Note=value; }
-        public Gear_type GearBox { get => GearBox; set => GearBox = value; }
-        public Vehicle Car { get => Car; set => Car = value; }
-        public double Grade
+        /// <summary>
+        /// default ctor
+        /// </summary>
+        public Test() { }
+
+       /// <summary>
+       /// ctor
+       /// </summary>
+       /// <param name="UniqCode_"></param>
+       /// <param name="IdTester_"></param>
+       /// <param name="IdTrainee_"></param>
+       /// <param name="DateTest_"></param>
+       /// <param name="AddressTest_"></param>
+       /// <param name="Parking_Reverse_"></param>
+       /// <param name="Notes_"></param>
+       /// <param name="PassedTest_"></param>
+       /// <param name="KeepDistance_"></param>
+       /// <param name="Signaling_"></param>
+       /// <param name="Mirrors_"></param>
+        public Test(int UniqCode_,string IdTester_, string IdTrainee_, DateTime DateTest_, Address AddressTest_, bool Parking_Reverse_, string Notes_, bool PassedTest_, bool KeepDistance_, bool Signaling_, bool Mirrors_)
         {
-        
-            get
-           {
-                double sum = 0;
-                sum += Distance_keep == true ? 1 : 0;
-                sum += Reverse_parking == true ? 1 : 0;
-                sum += Mirrors == true ? 1 : 0;
-                sum += Signals == true ? 1 : 0;
-                sum += Speed == true ? 1 : 0;
-                return sum / 5;//5 is the number of tests parmeters
+            UniqCode = Configuration.counterTest + 1;
+            IdTester = IdTester_;
+            IdTrainee = IdTrainee_;
+            DateTest = DateTest_;
+            AddressTest = AddressTest_;
+            Parking_Reverse = Parking_Reverse_;
+            Notes = Notes_;
+            PassedTest = PassedTest_;
+            KeepDistance = KeepDistance_;
+            Signaling = Signaling_;
+            Mirrors = Mirrors_;
+        }
+
+
+
+        int UniqCode;
+        /// <summary>
+        /// uniq code of the test
+        /// </summary>
+        public int _UniqCode
+        {
+            get { return UniqCode; }
+            set { UniqCode = value; }
+        }
+
+        string IdTester;
+        /// <summary>
+        /// return/set legal id of the tester
+        /// </summary>
+        public string _IdTester
+        {
+            get { return IdTester; }
+            set
+            {
+                if (value.Length != 9)
+                    throw new Exception("נא להכניס תעודת זהות בעלת 9 ספרות");
+                IdTester = value;
             }
         }
-        public Test(string testerId, string studentId, DateTime date, Address address, Gear_type gearBox, Vehicle car)
 
+
+
+        string IdTrainee;
+        /// <summary>
+        /// return/set legal id of the Trainee
+        /// </summary>
+        public string _IdTrainee
         {
-            this.Tester_Id = testerId;
-            this.Student_Id = studentId;
-            this.Date = date;
-            this.Address = address;
-            this.GearBox = gearBox;
-            this.Car = car;
-
+            get { return IdTrainee; }
+            set
+            {
+                if (value.Length != 9)
+                    throw new Exception("נא להכניס תעודת זהות בעלת 9 ספרות");
+                IdTrainee = value;
+            }
         }
-        public Test(string testerId, string studentId, Gear_type gear, Vehicle car, 
-        DateTime date, Address address, bool distance, bool parking, bool mirror, bool signal, bool spee, bool pass, string notes)
 
+        DateTime DateTest;
+        /// <summary>
+        /// date and hour of the test
+        /// </summary>
+        public DateTime _DateTest
         {
-            Test_Id = null;
-            this.Tester_Id = testerId;
-            this.Student_Id = studentId;
-            this.Car = car;
-            this.Date = date;
-            this.Address = address;
-            this.Distance_keep = distance;
-            this.Reverse_parking = parking;
-            this.Mirrors = mirror;
-            this.Signals = signal;
-            this.Speed = spee;
-            this.Is_pass = pass;
-            this.Note = notes;
-            this.GearBox = gear;
+            get { return DateTest; }
+            set { DateTest = value; }
         }
-        public object Clone()
 
+        Address AddressTest;
+        /// <summary>
+        /// Address of the test
+        /// </summary>
+        public Address _Address_Test
         {
-
-            Test temp = (Test)MemberwiseClone();
-
-            temp.Address = new Address(Address.street, Address.houseNumber, Address.city);
-
-            temp.Date = new DateTime(Date.Year, Date.Month, Date.Day);
-
-            return temp;
-
+            get { return AddressTest; }
+            set { AddressTest = value; }
         }
 
 
-
-        public override string ToString()
+        bool Parking_Reverse;
+        /// <summary>
+        /// check if the trainee Succeeded the  the test- Parking_Reverse
+        /// </summary>
+        public bool _Parking_Reverse
         {
-            string str = "";
-            str += Test_Id + " tester id: " + Tester_Id + " treainee id: " + Student_Id + " ";
-            return str;
+            get { return Parking_Reverse; }
+            set { Parking_Reverse = value; }
+        }
+
+
+        bool Mirrors;
+        /// <summary>
+        /// check if the trainee Succeeded the the test- mirrors
+        /// </summary>
+        public bool _Mirrors
+        {
+            get { return Mirrors; }
+            set { Mirrors = value; }
+        }
+
+
+        bool Signaling;
+        /// <summary>
+        /// check if the trainee Succeeded the the test- Signaling
+        /// </summary>
+        public bool _Signaling
+        {
+            get { return Signaling; }
+            set { Signaling = value; }
+        }
+
+
+        bool KeepDistance;
+        /// <summary>
+        /// check if the trainee Succeeded the the test- Keep Distance
+        /// </summary>
+        public bool _KeepDistance
+        {
+            get { return KeepDistance; }
+            set { KeepDistance = value; }
+        }
+
+
+        bool PassedTest;
+        /// <summary>
+        /// check if the trainee Succeeded the the test- Passed the Test
+        /// </summary>
+        public bool _PassedTest
+        {
+            get { return PassedTest; }
+            set { PassedTest = value; }
+        }
+
+        string Notes;
+        /// <summary>
+        /// Notes of the tester on the test
+        /// </summary>
+        public string _Notes
+        {
+            get { return Notes; }
+            set { Notes = value; }
         }
     }
+
 }

@@ -9,66 +9,281 @@ namespace BE
    public class Tester
     {
 
-       public string Id { get; set; }
-       public string First_name { get=>First_name;  set=>First_name=value; }
-       public string Last_name { get=>Last_name;  set=>Last_name=value; }
-       public DateTime Date_birth { get=>Date_birth;  set=>Date_birth=value; }
-       public Gender Gender { get=>Gender;  set=>Gender=value; }
-       public string Phone { get=>Phone;  set=>Phone=value; }
-       public Address Address { get=>Address;  set=>Address=value; }
-       public int Experience { get=>Experience;  set=>Experience=value; }
-       public int Tests_max { get=>Tests_max;  set=>Tests_max=value; }
-       public Gear_type G_t { get => G_t;  set => G_t = value; }
-       public Vehicle Vehicle { get=>Vehicle;  set=>Vehicle=value; }
-       public bool[,] Work_range = new bool[5, 6] ;
-       public double Max_distance { get=>Max_distance; set=>Max_distance=value; }
-       public int Age
-
+      {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_Schedule"></param>
+        /// <param name="_Password"></param>
+        /// <param name="_Email"></param>
+        /// <param name="_MaxWeeklyTests"></param>
+        /// <param name="_DateOfBirth"></param>
+        /// <param name="_CarType"></param>
+        /// <param name="_experience"></param>
+        /// <param name="_address"></param>
+        /// <param name="_gender"></param>
+        /// <param name="_PhoneNumber"></param>
+        /// <param name="_IdTester"></param>
+        /// <param name="_LastName"></param>
+        /// <param name="_FirstName"></param>
+        public Tester(bool[,] _Schedule,string _city, string _street, Gear_Type _GearType,  string _Password, string _Email, int _MaxWeeklyTests, DateTime _DateOfBirth , Car_Type _CarType, int _experience, Gender _gender, string _PhoneNumber, string _IdTester= "",string _LastName="",string _FirstName="")
         {
-            get
+            for (int i = 0; i < 6; i++)
+                for (int j = 0; j < 5; j++)
+                    Schedule[i, j] = _Schedule[i, j];
+
+
+            GearType = _GearType;
+            Password = _Password;
+            Email = _Email;
+            MaxWeeklyTests =_MaxWeeklyTests;
+            CarType=_CarType;
+            experience=_experience;
+            City= _city;
+            Street = _street;
+            gender = _gender;
+            PhoneNumber = _PhoneNumber;
+            IdTester = _IdTester;
+            LastName = _LastName;
+            FirstName = _FirstName;
+            DateOfBirth = _DateOfBirth;
+        }
+
+        /// <summary>
+        /// default ctor
+        /// </summary>
+        public Tester()
+        {
+
+        }
+
+        string IdTester;
+        /// <summary>
+        /// return/set legal id of the tester
+        /// </summary>
+        public string _IdTester
+        {
+            get { return IdTester; }
+            set
             {
-                // Save today's date.
-                var today = DateTime.Today;
-                // Calculate the age.
-                var age = today.Year - Date_birth.Year;
-                // Go back to the year the person was born in case of a leap year
-                if (Date_birth > today.AddYears(-age)) age--;
-                return age;
+                //check if the string contain only numbers
+                int n;
+                bool IsNumeric = int.TryParse(value, out n);
+
+                if (IsNumeric == false)
+                    throw new Exception("תעודת זהות חייבת להכיל רק מספרים");
+
+
+                if (value.Length != 9)
+                    throw new Exception("נא להכניס תעודת זהות בעלת 9 ספרות");
+                IdTester = value;
             }
-            set => Date_birth = new DateTime(DateTime.Now.Year - value, 1, 1);//default month and day if enter only age
         }
 
-        public Tester(string id, string first, string last, DateTime birth, Gender gen, string phone,
-            Address addre,  int experi ,int maxTests, Vehicle v,  Gear_type gt, double maxDistance )
+        string Email;
+        /// <summary>
+        /// Mail of the tester
+        /// </summary>
+        public string _Email
         {
-            this.Id = id;
-            First_name = first;
-            Last_name = last;
-            Date_birth = birth;
-            Gender = gen;
-            this.Phone = phone;
-            this.Address = Address;
-            Vehicle = v;
-            G_t = gt;
-            Experience = experi;
-            Tests_max = maxTests;
-            Max_distance = maxDistance;
+            get { return Email; }
+            set
+            {
+                if (!(value.Contains("@") && value.Contains(".")))
+                    throw new Exception("כתובת המייל לא תקינה");
+                Email = value;
+            }
         }
-             
 
+        string LastName;
+        /// <summary>
+        /// return/set last name of the tester
+        /// </summary>
+        public string _LastName
+        {
+            get { return "  " + LastName; }
+            set { LastName = value; }
+        }
+
+        string FirstName;
+        /// <summary>
+        /// return/set first name of the tester
+        /// </summary>
+        public string _FirstName
+        {
+            get { return ("  " + FirstName); }
+            set { FirstName = value; }
+        }
+
+
+
+        string Password;
+        /// <summary>
+        /// Password to login
+        /// </summary>
+        public string _Password
+        {
+            get { return Password; }
+            set { Password = value; }
+        }
+
+
+        DateTime DateOfBirth;
+        /// <summary>
+        /// get viarable of DateTime to Date Of Birth the tester
+        /// </summary>
+        public DateTime _DateOfBirth
+        {
+            get { return DateOfBirth; } 
+            set { DateOfBirth = value; }
+        }
+
+
+        Gender gender;
+        /// <summary>
+        /// gender of the tester
+        /// </summary>
+        public Gender _gender
+        {
+            get { return gender; }
+            set { gender = value; }
+        }
+
+
+        string PhoneNumber;
+        /// <summary>
+        /// get/set valid phone number of the tester
+        /// </summary>
+        public string _PhoneNumber
+        {
+            get { return PhoneNumber; }
+            set
+            {
+                int n;
+                bool IsNumeric = int.TryParse(value, out n);
+                if (value.Length != 10 || IsNumeric == false)
+                    throw new Exception(" נא להכניס מספר פלאפון תקין");
+                PhoneNumber = value;
+
+            }
+        }
+
+
+        string City;
+        /// <summary>
+        /// property to the address of the tester
+        /// </summary>
+        public string _City
+        {
+            get { return City; }
+            set { City = value; }
+        }
+
+
+        string Street;
+        /// <summary>
+        /// property to the address of the tester
+        /// </summary>
+        public string _Street
+        {
+            get { return Street; }
+            set { Street = value; }
+        }
+
+
+        int experience;
+        /// <summary>
+        /// Years of experience of the tester
+        /// </summary>
+        public int _experience
+        {
+            get { return experience; }
+            set
+            {
+                if (value == 0)
+                    throw new Exception(" לא ניתן לקבל בוחן ללא ניסיון");
+                experience = value;
+            }
+        }
+
+
+        int MaxWeeklyTests;
+        /// <summary>
+        /// Max Weekly Tests of the tester 
+        /// </summary>
+        public int Max_Weekly_Tests
+        {
+            get { return MaxWeeklyTests; }
+            set
+            {
+                if (value < 1)
+                    throw new Exception(" מצטערים, אנחנו צריכים בוחנים זמינים יותר");
+                MaxWeeklyTests = value;
+            }
+        }
+
+        Car_Type CarType;
+        /// <summary>
+        /// car type of the tester
+        /// </summary>
+        public Car_Type _CarType
+        {
+            get { return CarType; }
+            set { CarType = value; }
+        }
+
+
+        Gear_Type GearType;
+        /// <summary>
+        /// gear type that trainee
+        /// </summary>
+        public Gear_Type _GearType
+        {
+            get { return GearType; }
+            set { GearType = value; }
+        }
+
+        bool[,] Schedule=new bool[6,5];
+        /// <summary>
+        /// Schedule of the tester
+        /// </summary>
+        public bool[,] _Schedule
+        {
+            get { return Schedule; }
+            set
+            {
+                //Deep copying of schedule
+                for (int i = 0; i < 6; i++)
+                    for (int j = 0; j < 5; j++)
+                        Schedule[i, j] = value[i, j];
+            }
+        }
+
+
+        /// <summary>
+        /// return ToString of the Trainee
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return "tester name: " + First_name + Last_name + "id: " + Id;
-        }
+            string str = (IdTester + " :תעודת זהות" + '\n' + FirstName + " :שם פרטי" + '\n' + LastName + " :שם משפחה" + '\n');
+            if (gender == Gender.female)
+                str += "אישה" + " :מין" + '\n';
+            else str += "גבר" + '\n';
+            str += DateOfBirth.ToString() + " :תאריך לידה" + '\n' + PhoneNumber + " :מספר טלפון" + '\n' + City + " :עיר" + '\n' + Street + " :רחוב" + '\n';
+            if (CarType == Car_Type.Heavy_Truck)
+                str += "משאית כבדה" + '\n';
+            if (CarType == Car_Type.Medium_truck)
+                str += "משאית בינונית" + " :סוג רכב" + '\n';
+            if (CarType == Car_Type.private_car)
+                str += "מכונית פרטית" + " :סוג רכב" + '\n';
+            else str += "רכב דו-גלגלי" + " :סוג רכב" + '\n';
+            str += MaxWeeklyTests + " :מספר שעות מקסימלי בשבוע" + '\n';
+            str += experience + " :מספר שעות ניסיון" + '\n';
 
-        public object Clone()
-
-        {
-            Tester temp = (Tester)MemberwiseClone();
-            temp.Address = new Address(Address.street, Address.houseNumber, Address.city);
-            temp.Date_birth = new DateTime(Date_birth.Year, Date_birth.Month, Date_birth.Day);
-            return temp;
+            return str;
 
         }
     }
+
 }

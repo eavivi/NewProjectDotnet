@@ -41,9 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adress.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="MY_BE.cs" />
+    <Compile Include="enum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Tester.cs" />
